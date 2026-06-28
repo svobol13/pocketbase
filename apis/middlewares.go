@@ -423,7 +423,7 @@ func logRequest(event *core.RequestEvent, err error) {
 		slog.String("url", requestUri),
 		slog.String("method", method),
 		slog.Int("status", status),
-		slog.String("routePattern", event.Request.Pattern),
+		slog.String("routePattern", cutStr(event.Request.Pattern, 500)),
 		slog.String("referer", cutStr(event.Request.Referer(), 2000)),
 		slog.String("userAgent", cutStr(event.Request.UserAgent(), 2000)),
 	)
