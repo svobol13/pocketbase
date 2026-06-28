@@ -373,7 +373,7 @@ func logRequest(event *core.RequestEvent, err error) {
 		return
 	}
 
-	attrs := make([]any, 0, 15)
+	attrs := make([]any, 0, 16)
 
 	attrs = append(attrs, slog.String("type", "request"))
 
@@ -423,6 +423,7 @@ func logRequest(event *core.RequestEvent, err error) {
 		slog.String("url", requestUri),
 		slog.String("method", method),
 		slog.Int("status", status),
+		slog.String("routePattern", event.Request.Pattern),
 		slog.String("referer", cutStr(event.Request.Referer(), 2000)),
 		slog.String("userAgent", cutStr(event.Request.UserAgent(), 2000)),
 	)
